@@ -2,6 +2,7 @@ package com.example.a24012011120_mad_practical7
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -15,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
         // Play / Pause Button
         findViewById<FloatingActionButton>(R.id.btnPlay).setOnClickListener {
-
             Intent(applicationContext, MusicService::class.java)
                 .putExtra(MusicService.SERVICE_KEY, MusicService.SERVICE_DATA)
                 .also { startService(it) }
@@ -23,11 +23,23 @@ class MainActivity : AppCompatActivity() {
 
         // Stop Button
         findViewById<FloatingActionButton>(R.id.btnStop).setOnClickListener {
-
             Intent(applicationContext, MusicService::class.java)
                 .also { stopService(it) }
         }
 
+        // Previous Button
+        findViewById<FloatingActionButton>(R.id.btnPrevious)?.setOnClickListener {
+            Toast.makeText(this, "Previous Track", Toast.LENGTH_SHORT).show()
+        }
 
+        // Next Button
+        findViewById<FloatingActionButton>(R.id.btnNext)?.setOnClickListener {
+            Toast.makeText(this, "Next Track", Toast.LENGTH_SHORT).show()
+        }
+
+        // Shuffle Button
+        findViewById<FloatingActionButton>(R.id.btnShuffle)?.setOnClickListener {
+            Toast.makeText(this, "Shuffle Mode", Toast.LENGTH_SHORT).show()
+        }
     }
 }
